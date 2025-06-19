@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { Container, Row, Col, Spinner, Alert} from "react-bootstrap";
+import { Container, Row, Col, Spinner, Alert, Button} from "react-bootstrap";
 
 function ProductList() {
     const [products, setProducts] = useState([]);
@@ -37,6 +38,9 @@ function ProductList() {
                             <img src={product.image} alt={product.title} className="img-fluid mb-2" style={{height:"200px", obejectFit:"contain"}}/>
                             <h5 className="text-truncate">{product.title}</h5>
                             <p className="mb-1">${product.price}</p>
+                            <Link to={`/products/${product.id}`}>
+                                <Button variant="primary" size="sm">View Product Details</Button>
+                            </Link>
                         </div>
                     </Col>
                 ))}
